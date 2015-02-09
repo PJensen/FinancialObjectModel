@@ -1,4 +1,10 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System;
+using System.Xml.Serialization;
 
 namespace FinancialObjectModel
 {
@@ -13,7 +19,7 @@ namespace FinancialObjectModel
 		/// </summary>
 		/// <param name="name">The name.</param>
 		/// <param name="ticker">The ticker.</param>
-		protected Security(string name, string ticker)
+		protected Security (string name, string ticker)
 		{
 			Name = name;
 			Ticker = ticker;
@@ -44,9 +50,9 @@ namespace FinancialObjectModel
 		/// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
 		/// </returns>
 		/// <filterpriority>2</filterpriority>
-		public override string ToString()
+		public override string ToString ()
 		{
-			return string.Format("{0}", Name);
+			return string.Format ("{0}", Name);
 		}
 	}
 }

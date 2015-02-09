@@ -1,22 +1,23 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace FinancialObjectModel
 {
-
 	/// <summary>
-	///        Equity
+	///   IUnderlying
 	/// </summary>
-	public class Equity : Security
+	public class Underlying<T> where T : Security
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Security"/> class.
+		/// Gets or sets the security.
 		/// </summary>
-		/// <param name="name">The name.</param>
-		/// <param name="ticker">The ticker.</param>
-		public Equity (string name, string ticker)
-			: base (name, ticker)
-		{
-		}
+		/// <value>
+		/// The security.
+		/// </value>
+		public T Security { get; set; }
 
 		/// <summary>
 		/// Returns a <see cref="System.String" /> that represents this instance.
@@ -26,8 +27,9 @@ namespace FinancialObjectModel
 		/// </returns>
 		public override string ToString ()
 		{
-			return Ticker;
+			return Security.ToString ();
 		}
 	}
+
 }
 
