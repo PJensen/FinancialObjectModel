@@ -19,7 +19,7 @@ namespace FinancialObjectModel
 		/// </summary>
 		/// <param name="name">The name.</param>
 		/// <param name="ticker">The ticker.</param>
-		protected Security (string name, string ticker)
+		protected Security(string name, string ticker)
 		{
 			Name = name;
 			Ticker = ticker;
@@ -32,7 +32,7 @@ namespace FinancialObjectModel
 		[XmlAttribute]
 		public string Ticker { get; set; }
 
-		#region ISecurity Members
+#region ISecurity Members
 
 		/// <summary>
 		///   Gets or sets the name of the security.
@@ -41,7 +41,7 @@ namespace FinancialObjectModel
 		[XmlAttribute]
 		public string Name { get; set; }
 
-		#endregion
+#endregion
 
 		/// <summary>
 		/// Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
@@ -50,9 +50,9 @@ namespace FinancialObjectModel
 		/// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
 		/// </returns>
 		/// <filterpriority>2</filterpriority>
-		public override string ToString ()
+		public override string ToString()
 		{
-			return string.Format ("{0}", Name);
+			return string.Format("{0}", Name);
 		}
 	}
 }

@@ -27,8 +27,8 @@ namespace FinancialObjectModel
 		/// <param name="underlying"> The underlying. </param>
 		/// <param name="strikePrice"> The strike price. </param>
 		/// <param name="expiration"> The expiration. </param>
-		protected Option (OptionType type, OptionRights rights, Underlying<T> underlying, decimal strikePrice, DateTime expiration)
-			: base (OptionName (rights, underlying, strikePrice), OptionTicker (underlying, expiration))
+		protected Option(OptionType type, OptionRights rights, Underlying<T> underlying, decimal strikePrice, DateTime expiration)
+			: base(OptionName(rights, underlying, strikePrice), OptionTicker(underlying, expiration))
 		{
 			_underlying = underlying;
 			_strikePrice = strikePrice;
@@ -74,7 +74,7 @@ namespace FinancialObjectModel
 		/// <param name="underlying">The underlying.</param>
 		/// <param name="strike"> </param>
 		/// <returns></returns>
-		private static string OptionName (OptionRights rights, Underlying<T> underlying, decimal strike)
+		private static string OptionName(OptionRights rights, Underlying<T> underlying, decimal strike)
 		{
 			return rights + " " + underlying.Security.Name + " @ " + strike;
 		}
@@ -85,14 +85,14 @@ namespace FinancialObjectModel
 		/// <param name="underlying">The underlying.</param>
 		/// <param name="expiration">The expiration.</param>
 		/// <returns></returns>
-		private static string OptionTicker (Underlying<T> underlying, DateTime expiration)
+		private static string OptionTicker(Underlying<T> underlying, DateTime expiration)
 		{
-			return underlying.ToString () +
-			expiration.ToDateCode () +
-			expiration.SafeSubstring (3, 2);
+			return underlying.ToString() +
+			expiration.ToDateCode() +
+			expiration.SafeSubstring(3, 2);
 		}
 
-		#region Nested type: OptionValue
+#region Nested type: OptionValue
 
 		/// <summary>
 		///   OptionValue
@@ -115,7 +115,7 @@ namespace FinancialObjectModel
 			public decimal UnderlyingPrice;
 		}
 
-		#endregion
+#endregion
 	}
 }
 

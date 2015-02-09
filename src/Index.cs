@@ -15,8 +15,8 @@ namespace FinancialObjectModel
 		/// </summary>
 		/// <param name="name">The name.</param>
 		/// <param name="ticker">The ticker.</param>
-		public Index (string name, string ticker)
-			: base (name, ticker)
+		public Index(string name, string ticker)
+			: base(name, ticker)
 		{
 		}
 
@@ -25,9 +25,9 @@ namespace FinancialObjectModel
 		/// </summary>
 		/// <param name="security">The security.</param>
 		/// <returns></returns>
-		public SecurityWeight GetWeight (Security security)
+		public SecurityWeight GetWeight(Security security)
 		{
-			return new SecurityWeight (security, this [security]);
+			return new SecurityWeight(security, this[security]);
 		}
 
 		/// <summary>
@@ -36,24 +36,25 @@ namespace FinancialObjectModel
 		/// <value>
 		/// The weights.
 		/// </value>
-		private Dictionary<Security, decimal> Weights {
-			get { return Securities.ToDictionary (security => security, security => this [security]); }
-		}
+		private Dictionary<Security, decimal> Weights { get { return Securities.ToDictionary(security => security, security => this[security]); } }
 
 		/// <summary>
 		/// Adds the specified PCT weight.
 		/// </summary>
 		/// <param name="weight">The PCT weight.</param>
 		/// <param name="security">The security.</param>
-		public void Add (Security security, decimal weight)
+		public void Add(Security security, decimal weight)
 		{
 			if (weight <= 0)
-				throw new InvalidOperationException ("invalid security weight");
+				throw new InvalidOperationException("invalid security weight");
 
-			if (weightsMap.ContainsKey (security)) {
-				weightsMap [security] = weight;
-			} else {
-				weightsMap.Add (security, weight);
+			if (weightsMap.ContainsKey(security))
+			{
+				weightsMap[security] = weight;
+			}
+			else
+			{
+				weightsMap.Add(security, weight);
 			}
 		}
 
@@ -63,27 +64,27 @@ namespace FinancialObjectModel
 		/// <typeparam name="T"></typeparam>
 		/// <param name="underlying">The underlying.</param>
 		/// <param name="weight">The weight.</param>
-		public void Add<T> (Underlying<T> underlying, decimal weight) where T : Security
+		public void Add<T>(Underlying<T> underlying, decimal weight) where T : Security
 		{
-			Add (underlying.Security, weight);
+			Add(underlying.Security, weight);
 		}
 
-//		/// <summary>
-//		/// Adds the specified security weight.
-//		/// </summary>
-//		/// <param name="securityWeight">The security weight.</param>
-//		/// <param name="weight">The weight.</param>
-//		private void Add (Security securityWeight, decimal weight)
-//		{
-//		}
+		//		/// <summary>
+		//		/// Adds the specified security weight.
+		//		/// </summary>
+		//		/// <param name="securityWeight">The security weight.</param>
+		//		/// <param name="weight">The weight.</param>
+		//		private void Add (Security securityWeight, decimal weight)
+		//		{
+		//		}
 
 		/// <summary>
 		/// Adds the specified security weight.
 		/// </summary>
 		/// <param name="securityWeight">The security weight.</param>
-		public void Add (SecurityWeight securityWeight)
+		public void Add(SecurityWeight securityWeight)
 		{
-			Add (securityWeight.Security, securityWeight.Weight);
+			Add(securityWeight.Security, securityWeight.Weight);
 		}
 
 		/// <summary>
@@ -95,13 +96,16 @@ namespace FinancialObjectModel
 		/// <param name="security">The security.</param>
 		/// <returns></returns>
 		/// <exception cref="System.IndexOutOfRangeException">security is not part of index</exception>
-		public decimal this [Security security] {
-			get {
-				if (!weightsMap.ContainsKey (security)) {
-					throw new IndexOutOfRangeException ("security is not part of index");
+		public decimal this[Security security]
+		{
+			get
+			{
+				if (!weightsMap.ContainsKey(security))
+				{
+					throw new IndexOutOfRangeException("security is not part of index");
 				}
 
-				var securityWeight = weightsMap [security];
+				var securityWeight = weightsMap[security];
 
 				var weightedSecurityWeight = securityWeight / TotalWeight;
 
@@ -115,18 +119,17 @@ namespace FinancialObjectModel
 		/// <value>
 		/// The total.
 		/// </value>
-		private decimal TotalWeight {
-			get { return weightsMap.Values.Sum (); }
-		}
+		private decimal TotalWeight { get { return weightsMap.Values.Sum(); } }
 
 		/// <summary>
 		/// Removes the specified security.
 		/// </summary>
 		/// <param name="security">The security.</param>
-		public void Remove (Security security)
+		public void Remove(Security security)
 		{
-			if (weightsMap.ContainsKey (security)) {
-				weightsMap.Remove (security);
+			if (weightsMap.ContainsKey(security))
+			{
+				weightsMap.Remove(security);
 			}
 		}
 
@@ -134,7 +137,7 @@ namespace FinancialObjectModel
 		/// The weights map
 		/// </summary>
 		private readonly Dictionary<Security, decimal> weightsMap =
-			new Dictionary<Security, decimal> ();
+			new Dictionary<Security, decimal>();
 
 		/// <summary>
 		/// Gets the securities.
@@ -156,7 +159,7 @@ namespace FinancialObjectModel
 
 			public decimal Weight { get { return _weight; } }
 
-			public SecurityWeight (Security security, decimal weight)
+			public SecurityWeight(Security security, decimal weight)
 			{
 				_security = security;
 				_weight = weight;
@@ -169,9 +172,9 @@ namespace FinancialObjectModel
 		/// <returns>
 		/// A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
 		/// </returns>
-		public IEnumerator<SecurityWeight> GetEnumerator ()
+		public IEnumerator<SecurityWeight> GetEnumerator()
 		{
-			return Weights.Select (s => new SecurityWeight (s.Key, s.Value)).GetEnumerator ();
+			return Weights.Select(s => new SecurityWeight(s.Key, s.Value)).GetEnumerator();
 		}
 
 		/// <summary>
@@ -180,21 +183,22 @@ namespace FinancialObjectModel
 		/// <returns>
 		/// A <see cref="System.String" /> that represents this instance.
 		/// </returns>
-		public override string ToString ()
+		public override string ToString()
 		{
-			var sb = new StringBuilder ("SECURITY\tWEIGHT" + Environment.NewLine);
+			var sb = new StringBuilder("SECURITY\tWEIGHT" + Environment.NewLine);
 
-			foreach (var weight in weightsMap) {
-				sb.AppendFormat ("{0}\t{1}" + Environment.NewLine,
-					weight.Key, this [weight.Key]);
+			foreach (var weight in weightsMap)
+			{
+				sb.AppendFormat("{0}\t{1}" + Environment.NewLine,
+					weight.Key, this[weight.Key]);
 			}
 
-			return sb.ToString ();
+			return sb.ToString();
 		}
 
-		IEnumerator IEnumerable.GetEnumerator ()
+		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return GetEnumerator ();
+			return GetEnumerator();
 		}
 	}
 }

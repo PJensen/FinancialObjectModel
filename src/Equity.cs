@@ -13,8 +13,8 @@ namespace FinancialObjectModel
 		/// </summary>
 		/// <param name="name">The name.</param>
 		/// <param name="ticker">The ticker.</param>
-		public Equity (string name, string ticker)
-			: base (name, ticker)
+		public Equity(string name, string ticker)
+			: base(name, ticker)
 		{
 		}
 
@@ -24,7 +24,7 @@ namespace FinancialObjectModel
 		/// <returns>
 		/// A <see cref="System.String" /> that represents this instance.
 		/// </returns>
-		public override string ToString ()
+		public override string ToString()
 		{
 			return Ticker;
 		}
