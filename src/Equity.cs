@@ -2,7 +2,6 @@
 
 namespace FinancialObjectModel
 {
-
 	/// <summary>
 	///        Equity
 	/// </summary>

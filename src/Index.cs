@@ -7,6 +7,9 @@ using System.Text;
 
 namespace FinancialObjectModel
 {
+	/// <summary>
+	/// Index.
+	/// </summary>
 	[Serializable]
 	public class Index : Security, IEnumerable<Index.SecurityWeight>
 	{
@@ -20,15 +23,25 @@ namespace FinancialObjectModel
 		{
 		}
 
-		/// <summary>
-		/// Gets the weight.
-		/// </summary>
-		/// <param name="security">The security.</param>
-		/// <returns></returns>
-		public SecurityWeight GetWeight(Security security)
-		{
-			return new SecurityWeight(security, this[security]);
-		}
+		//		/// <summary>
+		//		/// Gets the weight.
+		//		/// </summary>
+		//		/// <param name="security">The security.</param>
+		//		/// <returns></returns>
+		//		public decimal GetWeight(Security security)
+		//		{
+		//			return this[security];
+		//		}
+		//
+		//		/// <summary>
+		//		/// Gets the weight.
+		//		/// </summary>
+		//		/// <returns>The weight.</returns>
+		//		/// <param name="ticker">Ticker.</param>
+		//		public decimal GetWeight(string ticker)
+		//		{
+		//			return weightsMap.SingleOrDefault(s => s.Key.Ticker == ticker).Value;
+		//		}
 
 		/// <summary>
 		/// Gets the weights.
@@ -46,8 +59,10 @@ namespace FinancialObjectModel
 		public void Add(Security security, decimal weight)
 		{
 			if (weight <= 0)
+			{
 				throw new InvalidOperationException("invalid security weight");
-
+			}
+				
 			if (weightsMap.ContainsKey(security))
 			{
 				weightsMap[security] = weight;
@@ -68,15 +83,6 @@ namespace FinancialObjectModel
 		{
 			Add(underlying.Security, weight);
 		}
-
-		//		/// <summary>
-		//		/// Adds the specified security weight.
-		//		/// </summary>
-		//		/// <param name="securityWeight">The security weight.</param>
-		//		/// <param name="weight">The weight.</param>
-		//		private void Add (Security securityWeight, decimal weight)
-		//		{
-		//		}
 
 		/// <summary>
 		/// Adds the specified security weight.
@@ -112,6 +118,12 @@ namespace FinancialObjectModel
 				return weightedSecurityWeight;
 			}
 		}
+
+		/// <summary>
+		/// Gets the <see cref="FinancialObjectModel.Index"/> with the specified ticker.
+		/// </summary>
+		/// <param name="ticker">Ticker.</param>
+		public decimal this[string ticker] { get { return this[weightsMap.Single(s => s.Key.Ticker == ticker).Key]; } }
 
 		/// <summary>
 		/// Gets the total of raw weights in the index.
@@ -152,13 +164,31 @@ namespace FinancialObjectModel
 		/// </summary>
 		public struct SecurityWeight
 		{
-			private readonly Security _security;
-			private readonly decimal _weight;
 
+#region backing store
+
+			readonly Security _security;
+			readonly decimal _weight;
+
+#endregion
+
+			/// <summary>
+			/// Gets the security.
+			/// </summary>
+			/// <value>The security.</value>
 			public Security Security { get { return _security; } }
 
+			/// <summary>
+			/// Gets the weight.
+			/// </summary>
+			/// <value>The weight.</value>
 			public decimal Weight { get { return _weight; } }
 
+			/// <summary>
+			/// Initializes a new instance of the <see cref="FinancialObjectModel.Index+SecurityWeight"/> struct.
+			/// </summary>
+			/// <param name="security">Security.</param>
+			/// <param name="weight">Weight.</param>
 			public SecurityWeight(Security security, decimal weight)
 			{
 				_security = security;
@@ -196,6 +226,10 @@ namespace FinancialObjectModel
 			return sb.ToString();
 		}
 
+		/// <summary>
+		/// Gets the enumerator.
+		/// </summary>
+		/// <returns>The enumerator.</returns>
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return GetEnumerator();

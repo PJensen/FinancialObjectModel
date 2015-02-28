@@ -13,9 +13,9 @@ namespace FinancialObjectModel
 	/// <typeparam name="T"> the type of the underlying </typeparam>
 	public abstract class Option<T> : Security where T : Security
 	{
+		private readonly decimal _strikePrice;
 		private readonly DateTime _expiration;
 		private readonly OptionRights _rights;
-		private readonly decimal _strikePrice;
 		private readonly OptionType _type;
 		private readonly Underlying<T> _underlying;
 
@@ -102,17 +102,17 @@ namespace FinancialObjectModel
 			/// <summary>
 			///   The intrinsic value
 			/// </summary>
-			public decimal IntrinsicValue;
+			public decimal IntrinsicValue { get; set; }
 
 			/// <summary>
 			///   The time value
 			/// </summary>
-			public decimal TimeValue;
+			public decimal TimeValue { get; set; }
 
 			/// <summary>
 			///   The underlying price
 			/// </summary>
-			public decimal UnderlyingPrice;
+			public decimal UnderlyingPrice { get; set; }
 		}
 
 #endregion
