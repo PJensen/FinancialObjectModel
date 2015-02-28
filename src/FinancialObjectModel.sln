@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialObjectModel", "Fin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialObjectModel.Test", "FinancialObjectModel.Test\FinancialObjectModel.Test.csproj", "{C103D7D7-53CA-4CFF-918E-1957D04294A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A52B502-764C-4749-8B2E-BE7340A25E48}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +24,8 @@ Global
 		{C103D7D7-53CA-4CFF-918E-1957D04294A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C103D7D7-53CA-4CFF-918E-1957D04294A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C103D7D7-53CA-4CFF-918E-1957D04294A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
