@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace FinancialObjectModel
 {
-
 	/// <summary>
-	/// I security master.
+	/// security master interface
 	/// </summary>
 	public interface IReferenceDataService
 	{

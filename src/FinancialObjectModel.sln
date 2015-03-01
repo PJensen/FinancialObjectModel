@@ -1,16 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialObjectModel", "FinancialObjectModel.csproj", "{67A07F85-2B92-4D73-91AE-B3803FE754AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialObjectModel", "FinancialObjectModel\FinancialObjectModel.csproj", "{67A07F85-2B92-4D73-91AE-B3803FE754AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialObjectModel.Test", "FinancialObjectModel.Test\FinancialObjectModel.Test.csproj", "{C103D7D7-53CA-4CFF-918E-1957D04294A0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3DB4CF02-F549-495C-8C5C-F96C7AE36793}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A52B502-764C-4749-8B2E-BE7340A25E48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialObjectModel.Test", "..\FinancialObjectModel.Test\FinancialObjectModel.Test.csproj", "{E224F584-C7BA-46B1-9138-3261DE9E4AC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1DAF0CBA-EAF3-44D5-810E-D3968EA18820}"
 	ProjectSection(SolutionItems) = preProject
-		..\README.md = ..\README.md
+		FinancialObjectModel.vsmdi = FinancialObjectModel.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = FinancialObjectModel.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -20,12 +27,17 @@ Global
 		{67A07F85-2B92-4D73-91AE-B3803FE754AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67A07F85-2B92-4D73-91AE-B3803FE754AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67A07F85-2B92-4D73-91AE-B3803FE754AC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C103D7D7-53CA-4CFF-918E-1957D04294A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C103D7D7-53CA-4CFF-918E-1957D04294A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C103D7D7-53CA-4CFF-918E-1957D04294A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C103D7D7-53CA-4CFF-918E-1957D04294A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E224F584-C7BA-46B1-9138-3261DE9E4AC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E224F584-C7BA-46B1-9138-3261DE9E4AC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E224F584-C7BA-46B1-9138-3261DE9E4AC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E224F584-C7BA-46B1-9138-3261DE9E4AC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{E224F584-C7BA-46B1-9138-3261DE9E4AC0} = {3DB4CF02-F549-495C-8C5C-F96C7AE36793}
+		{1DAF0CBA-EAF3-44D5-810E-D3968EA18820} = {3DB4CF02-F549-495C-8C5C-F96C7AE36793}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

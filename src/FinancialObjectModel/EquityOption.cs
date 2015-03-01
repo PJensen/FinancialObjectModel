@@ -7,7 +7,6 @@ using System;
 
 namespace FinancialObjectModel
 {
-
 	/// <summary>
 	///   EquityOption
 	/// </summary>

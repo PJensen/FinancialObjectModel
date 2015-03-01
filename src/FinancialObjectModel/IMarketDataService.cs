@@ -2,7 +2,6 @@
 
 namespace FinancialObjectModel
 {
-
 	/// <summary>
 	/// I market data source.
 	/// </summary>
