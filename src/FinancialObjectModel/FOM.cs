@@ -23,13 +23,13 @@ namespace FinancialObjectModel
         /// Gets the security price.
         /// </summary>
         /// <returns>The security price.</returns>
-        public Security.SecurityPrice GetSecurityPrice(DateTime asOfDate, string exchange, string ticker)
+        public SecurityPrice GetSecurityPrice(DateTime asOfDate, string exchange, string ticker)
         {
             // get the security from the security master
             var security = _securityMaster[ticker];
 
             // get the security exchange price
-            return _marketDataService.GetSecurityPrice(asOfDate, new Security.SecurityExchange(security, exchange));
+            return _marketDataService.GetSecurityPrice(asOfDate, new SecurityExchange(security, exchange));
         }
 
         /// <summary>

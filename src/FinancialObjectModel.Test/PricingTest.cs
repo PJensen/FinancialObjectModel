@@ -1,12 +1,12 @@
 ﻿using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FinancialObjectModel.Test
 {
-	[TestFixture]
+	[TestClass]
 	public class PricingTest
 	{
-		[Test]
+		[TestMethod]
 		public void TestEquityOptionPricing()
 		{
 			const string expectedName = "International Business Machines";
@@ -21,7 +21,7 @@ namespace FinancialObjectModel.Test
 
 			var ibmEquityOption = new EquityOption(expectedType, expectedRights, ibm, expectedStrike, expectedExpiration);
 
-
+            Assert.IsNotNull(ibmEquityOption);
 		}
 	}
 }

@@ -47,7 +47,11 @@
     <Compile Include="EquityOption.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IDerivative.cs" />
+    <Compile Include="SecurityAttribute.cs" />
+    <Compile Include="SecurityAttributes.cs" />
+    <Compile Include="SecurityExchange.cs" />
     <Compile Include="SecurityMaster.cs" />
+    <Compile Include="SecurityPrice.cs" />
     <Compile Include="Underlying.cs" />
     <Compile Include="FOM.cs" />
     <Compile Include="Interfaces\IMarketDataService.cs" />

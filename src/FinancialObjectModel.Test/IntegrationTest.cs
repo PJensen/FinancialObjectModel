@@ -1,93 +1,97 @@
 ﻿using System;
-using NUnit.Framework;
 using System.Collections.Generic;
+using FinancialObjectModel.Interfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FinancialObjectModel.Test
 {
-	[TestFixture]
-	public class IntegrationTest
-	{
-		/// <summary>
-		/// The object under test.
-		/// </summary>
-		private FOM objectUnderTest = null;
+    [TestClass]
+    public class IntegrationTest
+    {
+        /// <summary>
+        /// The object under test.
+        /// </summary>
+        private FOM objectUnderTest = null;
 
-		[SetUp]
-		public void SetUp()
-		{
-			objectUnderTest = new FOM(new MarketDataMock(), new RefDataMock());
-		}
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            objectUnderTest = new FOM(new MarketDataMock(), new RefDataMock());
+        }
 
-		[TearDown]
-		public void TearDown()
-		{
-			objectUnderTest = null;
-		}
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            objectUnderTest = null;
+        }
 
-		[Test]
-		public void FOMIntegrationTest()
-		{
-			Assert.IsNotNull(objectUnderTest.SecurityMaster);
+        [TestMethod]
+        public void FOMIntegrationTest()
+        {
+            Assert.IsNotNull(objectUnderTest.SecurityMaster);
 
-			for (int i = 0; i < 10; i++)
-			{
-				var securityPrice = objectUnderTest.GetSecurityPrice(DateTime.Today, "NYSE", "AAPL");
+            for (var i = 0; i < 10; i++)
+            {
+                var securityPrice = objectUnderTest.GetSecurityPrice(DateTime.Today, "NYSE", "AAPL");
 
-				Assert.AreEqual(1, objectUnderTest.SecurityMaster.Count);
+                Assert.AreEqual(1, objectUnderTest.SecurityMaster.Count);
 
-				Assert.IsTrue(securityPrice.Price > 0);
+                Assert.IsTrue(securityPrice.Price > 0);
 
-				Console.WriteLine(securityPrice);
-			}
-		}
+                Console.WriteLine(securityPrice);
+            }
+        }
 
-		public class RefDataMock : IReferenceDataService
-		{
-			public Security GetSecurity(string ticker)
-			{
-				var tmp = new Equity(ticker, ticker);
+        /// <summary>
+        /// RefDataMock
+        /// </summary>
+        public class RefDataMock : IReferenceDataService
+        {
+            public Security GetSecurity(string ticker)
+            {
+                var tmp = new Equity(ticker, ticker);
 
-				return tmp;
-			}
-		}
+                return tmp;
+            }
+        }
 
+        /// <summary>
+        /// MarketDataMock
+        /// </summary>
+        public class MarketDataMock : IMarketDataService
+        {
 
-		public class MarketDataMock : IMarketDataService
-		{
+            readonly Random _random = new Random();
+            readonly Dictionary<string, double> _priceMap = new Dictionary<string, double>();
 
-			readonly Random random = new Random();
+            /// <summary>
+            /// Gets the security price.
+            /// </summary>
+            /// <returns>The security price.</returns>
+            /// <param name = "asOfDate">the as of date</param>
+            /// <param name="securityExchange">security exchange</param>
+            public SecurityPrice GetSecurityPrice(DateTime asOfDate, SecurityExchange securityExchange)
+            {
+                const int maxPrice = 780;
 
-			readonly Dictionary<string, double> priceMap = new Dictionary<string, double>();
+                var security = securityExchange.Security;
+                var exchange = securityExchange.Exchange;
+                var ticker = security.Ticker;
 
-			/// <summary>
-			/// Gets the security price.
-			/// </summary>
-			/// <returns>The security price.</returns>
-			/// <param name = "asOfDate">the as of date</param>
-			/// <param name="securityExchange">security exchange</param>
-			public Security.SecurityPrice GetSecurityPrice(DateTime asOfDate, Security.SecurityExchange securityExchange)
-			{
-				const int maxPrice = 780;
+                if (!_priceMap.ContainsKey(ticker))
+                {
+                    _priceMap.Add(ticker, _random.Next(1, maxValue: maxPrice));
+                }
+                else
+                {
+                    // up a random amount; down a random amount.
+                    _priceMap[ticker] += _random.NextDouble();
+                    _priceMap[ticker] -= _random.NextDouble();
+                }
 
-				var security = securityExchange.Security;
-				var exchange = securityExchange.Exchange;
-				var ticker = security.Ticker;
-
-				if (!priceMap.ContainsKey(ticker))
-				{
-					priceMap.Add(ticker, random.Next(1, maxValue: maxPrice));
-				}
-				else
-				{
-					// up a random amount; down a random amount.
-					priceMap[ticker] += random.NextDouble();
-					priceMap[ticker] -= random.NextDouble();
-				}
-
-				return new Security.SecurityPrice(securityExchange.Security, Convert.ToDecimal(priceMap[ticker]), exchange);
-			}
-		}
-
-	}
+                return new SecurityPrice(securityExchange.Security, Convert.ToDecimal(_priceMap[ticker]), exchange);
+            }
+        }
+    }
 }
 

@@ -11,7 +11,7 @@ namespace FinancialObjectModel.Interfaces
 		/// Gets the security price.
 		/// </summary>
 		/// <returns>The security price.</returns>
-		Security.SecurityPrice GetSecurityPrice(DateTime asOfDate, Security.SecurityExchange security);
+		SecurityPrice GetSecurityPrice(DateTime asOfDate, SecurityExchange security);
 	}
 }
 

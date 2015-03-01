@@ -34,7 +34,7 @@ namespace FinancialObjectModel
 			_strikePrice = strikePrice;
 			_expiration = expiration;
 			_type = type;
-			_rights = rights;
+            _rights = rights;
 		}
 
 		/// <summary>

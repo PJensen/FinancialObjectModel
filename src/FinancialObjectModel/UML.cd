@@ -1,28 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="FinancialObjectModel.Equity">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Equity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FinancialObjectModel.EquityOption" Collapsed="true">
-    <Position X="5" Y="5.75" Width="1.5" />
+    <Position X="5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EquityOption.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FinancialObjectModel.ExtensionMethods" Collapsed="true">
-    <Position X="7" Y="0.5" Width="1.5" />
+    <Position X="7.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>ExtensionMethods.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FinancialObjectModel.FOM">
-    <Position X="1.5" Y="6.75" Width="1.5" />
+    <Position X="1.5" Y="8.75" Width="1.5" />
+    <AssociationLine Name="_securityMaster" Type="FinancialObjectModel.SecurityMaster" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="10.497" />
+        <Point X="2" Y="11.223" />
+        <Point X="4.75" Y="11.223" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAgAAAAAAAAAAAAAAAAABIAAAAAAAAAA=</HashCode>
       <FileName>FOM.cs</FileName>
@@ -33,7 +40,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="FinancialObjectModel.Index">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+    <Position X="2.75" Y="3.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -51,7 +58,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="FinancialObjectModel.Option&lt;T&gt;">
-    <Position X="5" Y="1.75" Width="1.5" />
+    <Position X="5" Y="3.75" Width="1.5" />
     <NestedTypes>
       <Struct Name="FinancialObjectModel.Option&lt;T&gt;.OptionValue" Collapsed="true">
         <TypeIdentifier>
@@ -65,26 +72,52 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="_underlying" />
-      <Property Name="Rights" />
       <Property Name="Type" />
+      <Property Name="Rights" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="FinancialObjectModel.Security" Collapsed="true">
+  <Class Name="FinancialObjectModel.Security">
     <Position X="2.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Interface Name="FinancialObjectModel.Security.IHasValue&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Security.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Struct Name="FinancialObjectModel.Security.SecurityExchange" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Security.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="FinancialObjectModel.Security.SecurityPrice" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Security.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAGAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAGAAAAAAQQAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Security.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_securityAttributes" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="FinancialObjectModel.Underlying&lt;T&gt;" Collapsed="true">
-    <Position X="7.75" Y="1.75" Width="1.5" />
+    <Position X="7.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAABAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Underlying.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FinancialObjectModel.SecurityMaster">
-    <Position X="4.75" Y="7.75" Width="1.5" />
+    <Position X="4.75" Y="9.75" Width="1.5" />
+    <AssociationLine Name="_referenceDataService" Type="FinancialObjectModel.Interfaces.IReferenceDataService" FixedFromPoint="true">
+      <Path>
+        <Point X="6.25" Y="11.188" />
+        <Point X="8.25" Y="11.188" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAACAAAAAQAAAAAAFAAAAAAAAAAAAA=</HashCode>
       <FileName>SecurityMaster.cs</FileName>
@@ -93,29 +126,46 @@
       <Field Name="_referenceDataService" />
     </ShowAsAssociation>
   </Class>
-  <Interface Name="FinancialObjectModel.Interfaces.IMarketDataService" Collapsed="true">
-    <Position X="8.25" Y="7" Width="1.5" />
+  <Class Name="FinancialObjectModel.SecurityAttributes">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SecurityAttributes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="FinancialObjectModel.SecurityAttribute">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAkAAAAAAA=</HashCode>
+      <FileName>SecurityAttribute.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Security" />
+    </ShowAsAssociation>
+  </Struct>
+  <Interface Name="FinancialObjectModel.Interfaces.IMarketDataService">
+    <Position X="8.25" Y="9" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IMarketDataService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="FinancialObjectModel.Interfaces.IReferenceDataService" Collapsed="true">
-    <Position X="8.25" Y="8" Width="1.5" />
+  <Interface Name="FinancialObjectModel.Interfaces.IReferenceDataService">
+    <Position X="8.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IReferenceDataService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="FinancialObjectModel.OptionRights" Collapsed="true">
-    <Position X="7.75" Y="3" Width="1.5" />
+  <Enum Name="FinancialObjectModel.OptionRights">
+    <Position X="7.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>OptionRights.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="FinancialObjectModel.OptionType" Collapsed="true">
-    <Position X="7.75" Y="4.25" Width="1.5" />
+  <Enum Name="FinancialObjectModel.OptionType">
+    <Position X="7.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEQhAAEAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>OptionType.cs</FileName>

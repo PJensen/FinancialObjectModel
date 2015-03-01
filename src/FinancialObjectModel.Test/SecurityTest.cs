@@ -1,12 +1,12 @@
 ﻿using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FinancialObjectModel.Test
 {
-	[TestFixture]
+	[TestClass]
 	public class SecurityTest
 	{
-		[Test]
+		[TestMethod]
 		public void EquitySecurityCtorTest()
 		{
 			var expectedName = Guid.NewGuid().ToString();
@@ -18,7 +18,7 @@ namespace FinancialObjectModel.Test
 			Assert.AreEqual(expectedTicker, tmp.Ticker);
 		}
 
-		[Test]
+		[TestMethod]
 		public void EquityOptionSecurityCtorTest()
 		{
 			const string expectedName = "International Business Machines";
@@ -40,6 +40,27 @@ namespace FinancialObjectModel.Test
 			Assert.AreEqual(expectedStrike, ibmEquityOption.StrikePrice);
 			Assert.AreEqual(expectedType, ibmEquityOption.Type);
 		}
+
+        [TestMethod]
+        public void SecurityAttributeTest()
+        {
+            const string equityName = "International Business Machines";
+            const string equityTicker = "IBM";
+
+            var ibm = new Equity(equityName, equityTicker);
+
+            Assert.IsNotNull(ibm.Attributes);
+
+            const string attributeName = "Id";
+            const int attributeValue = 100;
+            const int expectedCount = 1;
+
+            ibm.Attributes[attributeName] = attributeValue;
+
+            Assert.IsNull(ibm.Attributes["Missing"]);
+            Assert.AreEqual(expectedCount, ibm.Attributes.Count);
+            Assert.AreEqual(attributeValue, ibm.Attributes[attributeName]);           
+        }
 	}
 }
 
