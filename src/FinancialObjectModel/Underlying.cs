@@ -12,15 +12,14 @@ namespace FinancialObjectModel
 	/// </summary>
 	public class Underlying<T> where T : Security
 	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="FinancialObjectModel.Underlying`1"/> class.
-		/// </summary>
-		/// <param name="name">Name.</param>
-		/// <param name="ticker">Ticker.</param>
-		public Underlying(string name, string ticker)
-		{
-			this.Security = GetSecurity(name, ticker);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="security"></param>
+        public Underlying(Security security)
+        {
+            Security = security as T;
+        }
 
 		/// <summary>
 		/// Get the specified name and ticker.

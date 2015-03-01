@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using FinancialObjectModel.Interfaces;
 
 namespace FinancialObjectModel
@@ -23,6 +25,16 @@ namespace FinancialObjectModel
         }
 
         /// <summary>
+        /// GetSecurity
+        /// </summary>
+        /// <param name="predicate">the predicate</param>
+        /// <returns>a single security</returns>
+        public Security GetSecurity(Func<Security, bool> predicate)
+        {
+            return _referenceDataService.Securities.Single(predicate);
+        }
+
+        /// <summary>
         /// Gets the count.
         /// </summary>
         /// <value>The count.</value>
@@ -40,7 +52,8 @@ namespace FinancialObjectModel
         /// <param name="index">Index.</param>
         public Security this[string index]
         {
-            get {
+            get
+            {
                 return _cachePool.ContainsKey(index)
                            ? _cachePool[index]
                            : (this[index] = _referenceDataService.GetSecurity(index));
@@ -57,5 +70,6 @@ namespace FinancialObjectModel
                 }
             }
         }
+
     }
 }

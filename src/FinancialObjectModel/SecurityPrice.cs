@@ -104,5 +104,14 @@ namespace FinancialObjectModel
                 return hashCode;
             }
         }
+
+        /// <summary>
+        /// ToString
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return string.Format("AsOfDate: {0}, Security: {1}, Price: {2}, Exchange: {3}", _asOfDate, _security, _price, _exchange);
+        }
     }
 }

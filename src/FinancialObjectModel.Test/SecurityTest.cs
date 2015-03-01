@@ -25,7 +25,7 @@ namespace FinancialObjectModel.Test
 			const string expectedTicker = "IBM";
 
 			// create the underlying equity
-			var ibm = new Underlying<Equity>(expectedName, expectedTicker);
+		    var ibm = new Underlying<Equity>(new Equity(expectedName, expectedTicker));
 
 			var expectedExpiration = new DateTime(2015, 01, 01);
 			const decimal expectedStrike = 100;

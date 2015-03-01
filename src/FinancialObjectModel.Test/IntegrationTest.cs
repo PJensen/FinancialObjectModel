@@ -47,11 +47,27 @@ namespace FinancialObjectModel.Test
         /// </summary>
         public class RefDataMock : IReferenceDataService
         {
+            public RefDataMock()
+            {
+                Securities = new List<Security>();
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<Security> Securities { get; set; }
+
             public Security GetSecurity(string ticker)
             {
                 var tmp = new Equity(ticker, ticker);
 
                 return tmp;
+            }
+
+            public bool Initialized { get; private set; }
+
+            public bool Initialize()
+            {
+                return Initialized = true;
             }
         }
 

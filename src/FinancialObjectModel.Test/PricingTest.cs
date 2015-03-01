@@ -12,7 +12,7 @@ namespace FinancialObjectModel.Test
 			const string expectedName = "International Business Machines";
 			const string expectedTicker = "IBM";
 
-			var ibm = new Underlying<Equity>(expectedName, expectedTicker);
+		    var ibm = new Underlying<Equity>(new Equity(expectedName, expectedTicker));
 
 			var expectedExpiration = new DateTime(2015, 01, 01);
 			const decimal expectedStrike = 100;
