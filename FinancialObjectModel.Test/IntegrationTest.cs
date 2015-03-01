@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FinancialObjectModel.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FinancialObjectModel.Test

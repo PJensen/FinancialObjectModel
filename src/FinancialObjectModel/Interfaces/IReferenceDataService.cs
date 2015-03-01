@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-namespace FinancialObjectModel
+namespace FinancialObjectModel.Interfaces
 {
 	/// <summary>
 	/// security master interface

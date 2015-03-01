@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FinancialObjectModel
+namespace FinancialObjectModel.Interfaces
 {
 	/// <summary>
 	/// I market data source.

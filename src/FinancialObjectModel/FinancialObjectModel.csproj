@@ -47,10 +47,14 @@
     <Compile Include="EquityOption.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IDerivative.cs" />
+    <Compile Include="SecurityMaster.cs" />
     <Compile Include="Underlying.cs" />
     <Compile Include="FOM.cs" />
-    <Compile Include="IMarketDataService.cs" />
-    <Compile Include="IReferenceDataService.cs" />
+    <Compile Include="Interfaces\IMarketDataService.cs" />
+    <Compile Include="Interfaces\IReferenceDataService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UML.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

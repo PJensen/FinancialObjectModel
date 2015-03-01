@@ -182,7 +182,6 @@ namespace FinancialObjectModel
             /// <value>The shares.</value>
             public decimal Shares { get { return _shares; } }
 
-
             /// <summary>
             /// Initializes a new instance of <see cref="SecurityWeight"/>
             /// </summary>
